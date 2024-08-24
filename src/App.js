@@ -1,25 +1,33 @@
-import logo from './logo.svg';
-import './App.css';
+import { lazy } from "react";
+import { useSelector } from "react-redux";
+import { Route, Router, Routes } from "react-router-dom";
+import Layout from "./components/Layout/Layout";
 
-function App() {
+const Home = lazy(() => import("./pages/Home/Home"));
+const Prodacts = lazy(() => import("./pages/Prodacts/Prodacts"));
+const ProdactDetail = lazy(() => import("./pages/ProdactDetail/ProdactDetail"));
+const Auth = lazy(() => import("./pages/Auth/Auth"));
+
+const App = () => {
+  const darkMode = useSelector((state) => state.theme.darkMode);
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div
+      className={darkMode ? "bg-gray-800 text-white" : "bg-white text-black"}
+    >
+      
+        
+          <Routes>
+            <Route>
+              <Route path="/" element={<Home />} />
+              <Route path="/Prodacts" element={<Prodacts />} />
+              <Route path="/ProdactDetail/:id" element={<ProdactDetail />} />
+              <Route path="/Auth" element={<Auth />} />
+            </Route>
+          </Routes>
+        
+    
     </div>
   );
-}
-
+};
 export default App;
