@@ -15,6 +15,9 @@ const Auth = lazy(() => import("./pages/Auth/Auth"));
 const TermsOfUse = lazy(() => import("./pages/TermsOfUse/TermsOfUse"));
 const ContactUs = lazy(() => import("./pages/ContactUs/ContactUs"));
 const DesAboutUs = lazy(() => import("./pages/DesAboutUs/DesAboutUs"));
+const BlogDetail = lazy(() => import("./pages/BlogDetail/BlogDetail"));
+
+
 
 const App = () => {
   const darkMode = useSelector((state) => state.theme.darkMode);
@@ -30,7 +33,8 @@ const App = () => {
           <Route path="/ProdactDetail/:id" element={<ProdactDetail />} />
           <Route path="/Auth" element={<Auth />} />
           <Route path="/TelegramChannel" element={<TelegramChannel />} />
-          <Route path="/Blog/:id" element={<Blog />} />
+          <Route path="/Blog" element={<Blog />} />
+          <Route path="/BlogDetail/:id" element={<BlogDetail />} />
           <Route path="/TermsOfUse" element={<TermsOfUse />} />
           <Route path="/ContactUs" element={<ContactUs />} />
           <Route path="/DesAboutUs" element={<DesAboutUs />} />
