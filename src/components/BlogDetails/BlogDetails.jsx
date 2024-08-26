@@ -2,7 +2,7 @@ import React from "react";
 
 const BlogDetails = ({ titelblog, nameblog, dateblog, descriptionblog }) => {
   return (
-    <div className="container mx-auto p-4 md:p-8">
+    <div className="container mx-auto p-4 md:p-8 text-right">
       <div className="flex flex-col md:flex-row bg-white shadow-lg rounded-lg overflow-hidden">
         <div className="w-full md:w-1/2 p-4 md:p-8">
           <h1 className="text-2xl font-bold text-gray-900 mb-4">{titelblog}</h1>
