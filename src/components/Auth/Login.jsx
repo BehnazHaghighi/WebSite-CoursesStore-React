@@ -48,81 +48,9 @@ const Login = ({ forgetHandler }) => {
 
   return (
     <div className="flex flex-col md:flex-row justify-center md:justify-between bg-gray-100 p-4 rtl space-y-6 md:space-y-0 md:space-x-6 w-full">
-      {/* Register Card */}
-      <div
-        id="signup"
-        className="w-full md:w-1/2 bg-white shadow-lg rounded-lg p-8"
-      >
-        <h1 className="text-3xl font-bold text-right text-gray-800 mb-6">
-          عضویت
-        </h1>
-        <form
-          onSubmit={handleSubmitRegister(postdatRegister)}
-          className="text-right"
-        >
-          <div className="field-wrap mb-4">
-            <label className="block text-gray-700 text-sm font-bold mb-2">
-              <span className="text-red-500">*</span>آدرس ایمیل
-            </label>
-            <input
-              {...registerRegister("mobile", {
-                required: "The field is empty",
-              })}
-              autoComplete="off"
-              className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:border-blue-500 text-right"
-            />
-            {registerErrors.mobile && (
-              <span className="text-red-500">
-                {registerErrors.mobile.message}
-              </span>
-            )}
-          </div>
-
-          <div className="field-wrap mb-6">
-            <label className="block text-gray-700 text-sm font-bold mb-2">
-              <span className="text-red-500">*</span>گذرواژه
-            </label>
-            <div className="relative">
-              <input
-                type={showPasswordRegister ? "text" : "password"}
-                {...registerRegister("password", {
-                  required: "Password is empty",
-                  minLength: {
-                    value: 4,
-                    message: "The minimum password character is 4 digits",
-                  },
-                })}
-                className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:border-blue-500 text-right"
-              />
-              <button
-                type="button"
-                onClick={togglePasswordVisibilityRegister}
-                className="absolute inset-y-0 left-0 px-3 py-2 text-gray-600 focus:outline-none"
-              >
-                <FontAwesomeIcon
-                  icon={showPasswordRegister ? faEyeSlash : faEye}
-                />
-              </button>
-            </div>
-            {registerErrors.password && (
-              <span className="text-red-500">
-                {registerErrors.password.message}
-              </span>
-            )}
-          </div>
-
-          <button
-            type="submit"
-            disabled={isRegisterSubmitting}
-            className="w-full bg-blue-500 text-white py-2 rounded-lg hover:bg-blue-600 transition duration-300"
-          >
-            {isRegisterSubmitting ? "Loading..." : "عضویت"}
-          </button>
-        </form>
-      </div>
-
-      {/* Login Card */}
-      <div
+     
+           {/* Login Card */}
+           <div
         id="login"
         className="w-full md:w-1/2 bg-white shadow-lg rounded-lg p-8"
       >
@@ -196,6 +124,81 @@ const Login = ({ forgetHandler }) => {
           </p>
         </form>
       </div>
+     
+      {/* Register Card */}
+      <div
+        id="signup"
+        className="w-full md:w-1/2 bg-white shadow-lg rounded-lg p-8"
+      >
+        <h1 className="text-3xl font-bold text-right text-gray-800 mb-6">
+          عضویت
+        </h1>
+        <form
+          onSubmit={handleSubmitRegister(postdatRegister)}
+          className="text-right"
+        >
+          <div className="field-wrap mb-4">
+            <label className="block text-gray-700 text-sm font-bold mb-2">
+              <span className="text-red-500">*</span>آدرس ایمیل
+            </label>
+            <input
+              {...registerRegister("mobile", {
+                required: "The field is empty",
+              })}
+              autoComplete="off"
+              className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:border-blue-500 text-right"
+            />
+            {registerErrors.mobile && (
+              <span className="text-red-500">
+                {registerErrors.mobile.message}
+              </span>
+            )}
+          </div>
+
+          <div className="field-wrap mb-6">
+            <label className="block text-gray-700 text-sm font-bold mb-2">
+              <span className="text-red-500">*</span>گذرواژه
+            </label>
+            <div className="relative">
+              <input
+                type={showPasswordRegister ? "text" : "password"}
+                {...registerRegister("password", {
+                  required: "Password is empty",
+                  minLength: {
+                    value: 4,
+                    message: "The minimum password character is 4 digits",
+                  },
+                })}
+                className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:border-blue-500 text-right"
+              />
+              <button
+                type="button"
+                onClick={togglePasswordVisibilityRegister}
+                className="absolute inset-y-0 left-0 px-3 py-2 text-gray-600 focus:outline-none"
+              >
+                <FontAwesomeIcon
+                  icon={showPasswordRegister ? faEyeSlash : faEye}
+                />
+              </button>
+            </div>
+            {registerErrors.password && (
+              <span className="text-red-500">
+                {registerErrors.password.message}
+              </span>
+            )}
+          </div>
+
+          <button
+            type="submit"
+            disabled={isRegisterSubmitting}
+            className="w-full bg-blue-500 text-white py-2 rounded-lg hover:bg-blue-600 transition duration-300"
+          >
+            {isRegisterSubmitting ? "Loading..." : "عضویت"}
+          </button>
+        </form>
+      </div>
+
+
     </div>
   );
 };

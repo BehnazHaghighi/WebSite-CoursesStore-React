@@ -16,6 +16,9 @@ const TermsOfUse = lazy(() => import("./pages/TermsOfUse/TermsOfUse"));
 const ContactUs = lazy(() => import("./pages/ContactUs/ContactUs"));
 const DesAboutUs = lazy(() => import("./pages/DesAboutUs/DesAboutUs"));
 const BlogDetail = lazy(() => import("./pages/BlogDetail/BlogDetail"));
+const Shopping = lazy(() => import("./pages/Shopping/Shopping"));
+
+
 
 
 
@@ -38,6 +41,8 @@ const App = () => {
           <Route path="/TermsOfUse" element={<TermsOfUse />} />
           <Route path="/ContactUs" element={<ContactUs />} />
           <Route path="/DesAboutUs" element={<DesAboutUs />} />
+          <Route path="/Shopping" element={<Shopping />} />
+
         </Route>
       </Routes>
     </div>
