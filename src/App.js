@@ -3,7 +3,6 @@ import { useSelector } from "react-redux";
 import { Route, Router, Routes } from "react-router-dom";
 import Layout from "./components/Layout/Layout";
 
-
 const Home = lazy(() => import("./pages/Home/Home"));
 const TelegramChannel = lazy(() =>
   import("./pages/TelegramChannel/TelegramChannel")
@@ -17,10 +16,7 @@ const ContactUs = lazy(() => import("./pages/ContactUs/ContactUs"));
 const DesAboutUs = lazy(() => import("./pages/DesAboutUs/DesAboutUs"));
 const BlogDetail = lazy(() => import("./pages/BlogDetail/BlogDetail"));
 const Shopping = lazy(() => import("./pages/Shopping/Shopping"));
-
-
-
-
+const ReceiptShopping = lazy(() => import("./pages/ReceiptShopping/ReceiptShopping"));
 
 const App = () => {
   const darkMode = useSelector((state) => state.theme.darkMode);
@@ -42,7 +38,7 @@ const App = () => {
           <Route path="/ContactUs" element={<ContactUs />} />
           <Route path="/DesAboutUs" element={<DesAboutUs />} />
           <Route path="/Shopping" element={<Shopping />} />
-
+          <Route path="/ReceiptShopping" element={<ReceiptShopping />} />
         </Route>
       </Routes>
     </div>
