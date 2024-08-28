@@ -12,9 +12,7 @@ const ProductCard = ({ image, altname, productname, price, linkproduct }) => {
           className="w-full h-48 object-cover mb-4 rounded-lg"
         />
         <p className="text-blue-800">تکمیل شده</p>
-        <h6 className="text-lg font-semibold mb-2">
-          {productname}
-        </h6>
+        <h6 className="text-lg font-semibold mb-2">{productname}</h6>
 
         <div className="flex justify-between items-center">
           <div className="bg-blue-100 p-1 rounded">
