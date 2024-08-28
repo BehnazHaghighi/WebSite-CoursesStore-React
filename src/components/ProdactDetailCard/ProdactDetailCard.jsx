@@ -1,6 +1,7 @@
-import React, { useState } from "react";
+import React from "react";
 import { FaLock, FaClock, FaGraduationCap, FaDollarSign, FaPlayCircle } from "react-icons/fa";
 import { Link } from "react-router-dom";
+import { useSelector } from "react-redux";
 import Counter from "../../components/Counter/Counter";
 import SyllabusDropdowns from "../../components/ToggleDropdown/SyllabusDropdowns";
 
@@ -13,7 +14,8 @@ const ProdactDetailCard = ({
   hours,
   description,
 }) => {
-  const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const isLoggedIn = useSelector((state) => state.auth.isLoggedIn);
+
   const syllabusData = [
     {
       title: "سرفصل 1",
@@ -44,7 +46,7 @@ const ProdactDetailCard = ({
               </div>
             </div>
             <div className="flex justify-start items-center space-x-reverse space-x-2">
-              <FaClock size={14} className="text-gray-700" />
+              <FaClock size={14} className="text-blue-500" />
               <span className="text-sm text-gray-700">{hours}</span>
             </div>
           </div>
