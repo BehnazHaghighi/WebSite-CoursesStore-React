@@ -10,7 +10,10 @@ import {
   FaClock,
   FaDollarSign,
 } from "react-icons/fa";
-
+import { Link } from "react-router-dom";
+import ReadMore from "../../components/ReadMore/ReadMore";
+import UserReviewCard from "../../components/UserReviewCard/UserReviewCard";
+import Slider from "../../components/Slider/Slider";
 import pic from "../../assets/image/masood.jpg";
 import alijalali from "../../assets/image/jalali.jpg";
 import mojtahedi from "../../assets/image/mojtahedi.jpg";
@@ -18,9 +21,12 @@ import purmohammad from "../../assets/image/purmohammad.jpg";
 import farajpour from "../../assets/image/farajpour.jpg";
 import mirzaei from "../../assets/image/mirzaei.jpg";
 import malekzadeh from "../../assets/image/malekzadeh.jpg";
-import { Link } from "react-router-dom";
-import ReadMore from "../../components/ReadMore/ReadMore";
-import UserReviewCard from "../../components/UserReviewCard/UserReviewCard";
+
+const slides = [
+  "https://via.placeholder.com/800x400?text=Slide+1",
+  "https://via.placeholder.com/800x400?text=Slide+2",
+  "https://via.placeholder.com/800x400?text=Slide+3",
+];
 
 const reviews = [
   {
@@ -71,6 +77,12 @@ const Home = () => {
   return (
     <>
       <Layout>
+        {/* slider */}
+        <div>
+          <Slider slides={slides} />
+        </div>
+        {/* end slider */}
+
         {/* section1 information site */}
         <div className="container mx-auto p-4 md:p-8 rtl">
           <div className="flex flex-col justify-between items-center md:flex-row bg-white shadow-lg rounded-lg overflow-hidden">
@@ -137,7 +149,6 @@ const Home = () => {
         </div>
         {/* end section1 information site */}
 
-
         {/* section 2 readmore product */}
         <div className="mt-3">
           <h1 className="text-2xl font-bold mb-6">دوره‌های آموزشی</h1>
@@ -145,10 +156,11 @@ const Home = () => {
         </div>
         {/* end section 2 readmore product */}
 
-
         {/* section 3 userreview */}
         <div className="container mx-auto p-4 mt-3">
-          <h1 className="text-2xl font-bold mb-6">از زبان دانشجویان فرانت کست</h1>
+          <h1 className="text-2xl font-bold mb-6">
+            از زبان دانشجویان فرانت کست
+          </h1>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
             {reviews.map((review) => (
               <UserReviewCard
