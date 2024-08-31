@@ -1,7 +1,7 @@
 import axios from "axios";
 
 const apiLogin = axios.create({
-  baseURL: "https://auth.lohesama.com/api/",
+  baseURL: "https://dummyjson.com/",
   timeout: 10000,
   headers: {
     "Content-Type": "application/json",

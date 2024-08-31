@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { toggleDarkmode } from "../../redux/slice/themSlice";
 import logo from "../../assets/image/frontcast-logo-top.png";
@@ -9,9 +9,8 @@ import { faShoppingCart } from "@fortawesome/free-solid-svg-icons";
 const Header = () => {
   const darkMode = useSelector((state) => state.theme.darkMode);
   const cartItemCount = useSelector((state) => state.cart.items.length);
-
-  const [isLoggedIn, setIsLoggedIn] = useState(false);
-  const [username, setUsername] = useState("بهناز");
+  const token = useSelector((state) => state.auth.token);
+  const username = useSelector((state) => state.auth.username);
 
   const dispatch = useDispatch();
 
@@ -31,16 +30,13 @@ const Header = () => {
       <nav className="flex flex-col md:flex-row md:space-x-reverse md:space-x-6 space-y-2 md:space-y-0 text-center">
         <ul className="flex flex-col md:flex-row md:space-x-reverse md:space-x-6 space-y-2 md:space-y-0">
           <li>
-            {isLoggedIn ? (
+            {token ? (
               <span className="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-700">
                 سلام، {username}
               </span>
             ) : (
               <Link to="/Auth">
-                <button
-                  onClick={() => setIsLoggedIn(true)}
-                  className="bg-blue-500 px-4 py-2 rounded  text-white hover:bg-blue-600"
-                >
+                <button className="bg-blue-500 px-4 py-2 rounded text-white hover:bg-blue-600">
                   حساب کاربری
                 </button>
               </Link>

@@ -14,7 +14,9 @@ const ProdactDetailCard = ({
   hours,
   description,
 }) => {
-  const isLoggedIn = useSelector((state) => state.auth.isLoggedIn);
+  
+
+  const isLogin = useSelector((state) => state.auth.token);
 
   const syllabusData = [
     {
@@ -73,7 +75,7 @@ const ProdactDetailCard = ({
             alt={altname}
             className="w-full h-64 object-contain"
           />
-          {!isLoggedIn && (
+          {!isLogin && (
             <div className="absolute inset-0 bg-black bg-opacity-50 flex justify-center items-center">
               <FaLock size={48} className="text-white" />
             </div>

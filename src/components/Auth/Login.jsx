@@ -4,6 +4,9 @@ import { loginPost, registerPost } from "../../servises/loginService";
 import RememberMe from "../../components/RememberMe/RememberMe";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faEye, faEyeSlash } from "@fortawesome/free-solid-svg-icons";
+import { useDispatch, useSelector } from "react-redux";
+import { userlogin } from "../../redux/slice/authSlice";
+import { useNavigate } from "react-router-dom";
 
 const Login = ({ forgetHandler }) => {
   const loginForm = useForm();
@@ -20,12 +23,36 @@ const Login = ({ forgetHandler }) => {
     formState: { errors: registerErrors, isSubmitting: isRegisterSubmitting },
   } = registerForm;
 
+  // ...........login
+  // valid username and password
+  // username: 'emilys',
+  // password: 'emilyspass',
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
+
   const postdatLogin = async (data) => {
-    const response = await loginPost({
-      mobile: data.mobile,
-      password: data.password,
-    });
+    try {
+      const result = await dispatch(
+        userlogin({
+          username: data.mobile,
+          password: data.password,
+        })
+      );
+
+      if (result.payload && result.payload.token) {
+        navigate("/");
+      } else if (
+        result.payload &&
+        result.payload === "نام کاربری یا رمز عبور اشتباه است."
+      ) {
+        alert(result.payload); // نمایش خطای 400
+      }
+    } catch (error) {
+      console.error("یک خطای غیرمنتظره رخ داد:", error);
+    }
   };
+
+  // ...........end login
 
   const postdatRegister = async (data) => {
     const response = await registerPost({
@@ -48,9 +75,8 @@ const Login = ({ forgetHandler }) => {
 
   return (
     <div className="flex flex-col md:flex-row justify-center md:justify-between bg-gray-100 p-4 rtl space-y-6 md:space-y-0 md:space-x-6 w-full">
-     
-           {/* Login Card */}
-           <div
+      {/* Login Card */}
+      <div
         id="login"
         className="w-full md:w-1/2 bg-white shadow-lg rounded-lg p-8"
       >
@@ -124,7 +150,7 @@ const Login = ({ forgetHandler }) => {
           </p>
         </form>
       </div>
-     
+
       {/* Register Card */}
       <div
         id="signup"
@@ -197,8 +223,6 @@ const Login = ({ forgetHandler }) => {
           </button>
         </form>
       </div>
-
-
     </div>
   );
 };

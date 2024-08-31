@@ -16,7 +16,10 @@ const ContactUs = lazy(() => import("./pages/ContactUs/ContactUs"));
 const DesAboutUs = lazy(() => import("./pages/DesAboutUs/DesAboutUs"));
 const BlogDetail = lazy(() => import("./pages/BlogDetail/BlogDetail"));
 const Shopping = lazy(() => import("./pages/Shopping/Shopping"));
-const ReceiptShopping = lazy(() => import("./pages/ReceiptShopping/ReceiptShopping"));
+const ReceiptShopping = lazy(() =>
+  import("./pages/ReceiptShopping/ReceiptShopping")
+);
+const NotFoundPage = lazy(() => import("./pages/NotFoundPage/NotFoundPage"));
 
 const App = () => {
   const darkMode = useSelector((state) => state.theme.darkMode);
@@ -39,6 +42,7 @@ const App = () => {
           <Route path="/DesAboutUs" element={<DesAboutUs />} />
           <Route path="/Shopping" element={<Shopping />} />
           <Route path="/ReceiptShopping" element={<ReceiptShopping />} />
+          <Route path="/*" element={<NotFoundPage />} />
         </Route>
       </Routes>
     </div>
