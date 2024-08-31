@@ -3,6 +3,8 @@ import { useEffect, useState } from "react";
 import { useLocation, useParams } from "react-router-dom";
 import ProdactDetailCard from "../../components/ProdactDetailCard/ProdactDetailCard";
 import Layout from "../../components/Layout/Layout";
+import { useDispatch } from "react-redux";
+import { addItemToCart } from "../../redux/slice/cartSlice";
 
 const ProdactDetail = () => {
   const location = useLocation();
@@ -20,21 +22,29 @@ const ProdactDetail = () => {
     getProdactDetailHandler();
   }, []);
 
+  // ........shopping cart
+  const dispatch = useDispatch();
+
+  const addToCartHandler = (product) => {
+    dispatch(addItemToCart(product));
+  };
+  // ........end shopping cart
+
   return (
     <Layout>
-    <>
-      <ProdactDetailCard
-        image={singelProduct.thumbnail}
-        altname={singelProduct.title}
-        productname={singelProduct.title}
-        price={singelProduct.price}
-        // students={singelProduct.title}
-        // hours={singelProduct.title}
-        students={"179 دانشجو"}
-        hours={"۷ ساعت و ۴۵ دقیقه"}
-        description={singelProduct.description}
-      />
-    </>
+      <>
+        <ProdactDetailCard
+          image={singelProduct.thumbnail}
+          altname={singelProduct.title}
+          productname={singelProduct.title}
+          price={singelProduct.price}
+          // students={singelProduct.title}
+          // hours={singelProduct.title}
+          students={"179 دانشجو"}
+          hours={"۷ ساعت و ۴۵ دقیقه"}
+          description={singelProduct.description}
+        />
+      </>
     </Layout>
   );
 };

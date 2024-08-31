@@ -1,23 +1,25 @@
-import React, { useState } from 'react';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faPlus, faMinus, faTrash } from '@fortawesome/free-solid-svg-icons';
+import React, { useState } from "react";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faPlus, faMinus, faTrash } from "@fortawesome/free-solid-svg-icons";
 
 const Counter = () => {
   const [quantity, setQuantity] = useState(0);
 
   const increaseQuantity = () => {
-    setQuantity(prev => prev + 1);
+    setQuantity((prev) => prev + 1);
   };
 
   const decreaseQuantity = () => {
     if (quantity > 0) {
-      setQuantity(prev => prev - 1);
+      setQuantity((prev) => prev - 1);
     }
   };
 
   const resetCart = () => {
     setQuantity(0);
   };
+
+
 
   return (
     <div className="p-4 bg-white shadow rounded-md text-center">
@@ -26,6 +28,7 @@ const Counter = () => {
           onClick={increaseQuantity}
           className="bg-blue-500 text-white py-2 px-4 rounded hover:bg-blue-600 transition duration-300"
         >
+           
           افزودن به سبد خرید
         </button>
       ) : (

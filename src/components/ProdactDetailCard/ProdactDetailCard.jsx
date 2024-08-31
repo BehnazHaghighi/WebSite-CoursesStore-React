@@ -1,9 +1,15 @@
 import React from "react";
-import { FaLock, FaClock, FaGraduationCap, FaDollarSign, FaPlayCircle } from "react-icons/fa";
+import {
+  FaLock,
+  FaClock,
+  FaGraduationCap,
+  FaDollarSign,
+  FaPlayCircle,
+} from "react-icons/fa";
 import { Link } from "react-router-dom";
-import { useSelector } from "react-redux";
 import Counter from "../../components/Counter/Counter";
 import SyllabusDropdowns from "../../components/ToggleDropdown/SyllabusDropdowns";
+import { useSelector } from "react-redux";
 
 const ProdactDetailCard = ({
   image,
@@ -14,8 +20,6 @@ const ProdactDetailCard = ({
   hours,
   description,
 }) => {
-  
-
   const isLogin = useSelector((state) => state.auth.token);
 
   const syllabusData = [
@@ -29,12 +33,16 @@ const ProdactDetailCard = ({
     },
   ];
 
+
+
   return (
     <div className="container mx-auto p-4 md:p-8 rtl">
       <div className="flex flex-col md:flex-row bg-white shadow-lg rounded-lg overflow-hidden">
         {/* Section for Product Info */}
         <div className="w-full md:w-1/2 p-4 md:p-8">
-          <h6 className="text-2xl font-bold text-gray-900 mb-4">{productname}</h6>
+          <h6 className="text-2xl font-bold text-gray-900 mb-4">
+            {productname}
+          </h6>
 
           <div className="flex flex-col space-y-4 text-right">
             <div className="flex flex-row justify-between items-center space-y-2">
@@ -54,9 +62,16 @@ const ProdactDetailCard = ({
           </div>
 
           {/* Counter for Order */}
-          <div className="mt-3 mb-3">
+          {/* <div className="mt-3 mb-3">
             <Counter />
-          </div>
+          </div> */}
+
+          <button
+            // onClick={() => addToCartHandler(product)}
+            className="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-700 transition"
+          >
+            افزودن به سبد خرید
+          </button>
 
           {/* YouTube Link */}
           <Link
