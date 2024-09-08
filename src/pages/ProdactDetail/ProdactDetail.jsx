@@ -41,7 +41,10 @@ const ProdactDetail = () => {
           students={"179 دانشجو"}
           hours={"۷ ساعت و ۴۵ دقیقه"}
           description={singelProduct.description}
-          product={singelProduct} // اضافه کردن محصول
+          product={{
+            ...singelProduct,
+            name: singelProduct.title,
+          }}
         />
       </>
     </Layout>

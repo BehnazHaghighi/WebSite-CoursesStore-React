@@ -1,15 +1,12 @@
 import React from "react";
+import { useLocation } from "react-router-dom";
 
 const Receipt = () => {
-  const courses = [
-    { id: 1, name: "دوره ری‌اکت", price: 500000, quantity: 2 },
-    { id: 2, name: "دوره نود جی‌اس", price: 600000, quantity: 1 },
-    { id: 3, name: "دوره جاوااسکریپت", price: 400000, quantity: 3 },
-  ];
+  const location = useLocation();
+  const { cartData } = location.state; // دریافت داده‌های ارسال‌شده
 
-  //    sum
-  const totalAmount = courses.reduce(
-    (acc, course) => acc + course.price * course.quantity,
+  const totalAmount = cartData.items.reduce(
+    (acc, item) => acc + item.price * item.quantity,
     0
   );
 
@@ -27,27 +24,24 @@ const Receipt = () => {
             </tr>
           </thead>
           <tbody>
-            {courses.map((course) => (
-              <tr key={course.id}>
-                <td className="text-right px-4 py-2 border-b">{course.name}</td>
+            {cartData.items.map((item) => (
+              <tr key={item.id}>
+                <td className="text-right px-4 py-2 border-b">{item.name}</td>
                 <td className="text-right px-4 py-2 border-b">
-                  {course.price.toLocaleString()}
+                  {item.price.toLocaleString()}
                 </td>
                 <td className="text-right px-4 py-2 border-b">
-                  {course.quantity}
+                  {item.quantity}
                 </td>
                 <td className="text-right px-4 py-2 border-b">
-                  {(course.price * course.quantity).toLocaleString()}
+                  {(item.price * item.quantity).toLocaleString()}
                 </td>
               </tr>
             ))}
           </tbody>
           <tfoot>
             <tr className="bg-gray-100">
-              <td
-                colSpan="3"
-                className="text-right px-4 py-2 font-bold border-b"
-              >
+              <td colSpan="3" className="text-right px-4 py-2 font-bold border-b">
                 جمع کل:
               </td>
               <td className="text-right px-4 py-2 font-bold border-b">
