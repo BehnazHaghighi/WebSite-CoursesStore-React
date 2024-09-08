@@ -38,11 +38,10 @@ const ProdactDetail = () => {
           altname={singelProduct.title}
           productname={singelProduct.title}
           price={singelProduct.price}
-          // students={singelProduct.title}
-          // hours={singelProduct.title}
           students={"179 دانشجو"}
           hours={"۷ ساعت و ۴۵ دقیقه"}
           description={singelProduct.description}
+          product={singelProduct} // اضافه کردن محصول
         />
       </>
     </Layout>

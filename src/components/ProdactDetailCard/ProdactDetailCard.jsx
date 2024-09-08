@@ -9,7 +9,8 @@ import {
 import { Link } from "react-router-dom";
 import Counter from "../../components/Counter/Counter";
 import SyllabusDropdowns from "../../components/ToggleDropdown/SyllabusDropdowns";
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
+import { addItemToCart } from "../../redux/slice/cartSlice";
 
 const ProdactDetailCard = ({
   image,
@@ -19,8 +20,17 @@ const ProdactDetailCard = ({
   students,
   hours,
   description,
+  product,
 }) => {
   const isLogin = useSelector((state) => state.auth.token);
+  const cartItems = useSelector((state) =>
+    state.cart.items.find((item) => item.id === product.id)
+  );
+  const dispatch = useDispatch();
+
+  const handleAddToCart = () => {
+    dispatch(addItemToCart(product));
+  };
 
   const syllabusData = [
     {
@@ -32,8 +42,6 @@ const ProdactDetailCard = ({
       subsections: ["زیرمجموعه 2.1", "زیرمجموعه 2.2"],
     },
   ];
-
-
 
   return (
     <div className="container mx-auto p-4 md:p-8 rtl">
@@ -62,16 +70,16 @@ const ProdactDetailCard = ({
           </div>
 
           {/* Counter for Order */}
-          {/* <div className="mt-3 mb-3">
-            <Counter />
-          </div> */}
-
-          <button
-            // onClick={() => addToCartHandler(product)}
-            className="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-700 transition"
-          >
-            افزودن به سبد خرید
-          </button>
+          {cartItems ? (
+            <Counter product={product} />
+          ) : (
+            <button
+              onClick={handleAddToCart}
+              className="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-700 transition"
+            >
+              افزودن به سبد خرید
+            </button>
+          )}
 
           {/* YouTube Link */}
           <Link
