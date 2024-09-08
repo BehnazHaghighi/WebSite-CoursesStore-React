@@ -12,11 +12,9 @@ const Cart = () => {
 
   const handlePayment = () => {
     const cartData = { items, totalQuantity, totalPrice };
-    navigate("/ReceiptShopping", { state: { cartData } }); // ارسال داده‌ها به Receipt
+    navigate("/ReceiptShopping", { state: { cartData } });
   };
 
-
-  
   return (
     <div className="p-4">
       <h2 className="text-2xl font-bold mb-4">سبد خرید</h2>
@@ -24,28 +22,53 @@ const Cart = () => {
         <p>سبد خرید خالی است.</p>
       ) : (
         <div>
-          <ul>
-            {items.map((item) => (
-              <li
-                key={item.id}
-                className="flex justify-between items-center mb-2"
-              >
-                <span>{item.name}</span>
-                <span>{item.totalPrice} تومان</span>
-                <Counter product={item} />
-              </li>
-            ))}
-          </ul>
+          {/* جدول اول: نام دوره، مبلغ و تعداد */}
+          <div className="overflow-x-auto">
+            <table className="min-w-full bg-white border border-gray-200">
+              <thead>
+                <tr className="bg-gray-100">
+                  <th className="text-right px-4 py-2 border-b">نام دوره</th>
+                  <th className="text-right px-4 py-2 border-b">مبلغ (تومان)</th>
+                  <th className="text-right px-4 py-2 border-b">تعداد</th>
+                </tr>
+              </thead>
+              <tbody>
+                {items.map((item) => (
+                  <tr key={item.id}>
+                    <td className="text-right px-4 py-2 border-b">{item.name}</td>
+                    <td className="text-right px-4 py-2 border-b">
+                      {item.totalPrice.toLocaleString()} تومان
+                    </td>
+                    <td className="text-right px-4 py-2 border-b">
+                      <Counter product={item} />
+                    </td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
+
+          {/* جدول دوم: تعداد کل و قیمت کل */}
           <div className="mt-4">
-            <p>تعداد کل: {totalQuantity}</p>
-            <p>قیمت کل: {totalPrice} تومان</p>
+            <table className="min-w-full bg-white border border-gray-200">
+              <tbody>
+                <tr>
+                  <td className="text-right px-4 py-2 border-b font-bold">تعداد کل:</td>
+                  <td className="text-right px-4 py-2 border-b">{totalQuantity}</td>
+                </tr>
+                <tr>
+                  <td className="text-right px-4 py-2 border-b font-bold">قیمت کل:</td>
+                  <td className="text-right px-4 py-2 border-b">
+                    {totalPrice.toLocaleString()} تومان
+                  </td>
+                </tr>
+              </tbody>
+            </table>
           </div>
         </div>
       )}
 
-     
-
-      {/* payment */}
+      {/* پرداخت */}
       {token ? (
         <button
           onClick={handlePayment}
@@ -60,7 +83,6 @@ const Cart = () => {
           </button>
         </Link>
       )}
-      {/* end payment */}
     </div>
   );
 };
