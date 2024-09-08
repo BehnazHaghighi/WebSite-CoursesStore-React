@@ -23,11 +23,11 @@ const ProdactDetail = () => {
   }, []);
 
   // ........shopping cart
-  const dispatch = useDispatch();
+  // const dispatch = useDispatch();
 
-  const addToCartHandler = (product) => {
-    dispatch(addItemToCart(product));
-  };
+  // const addToCartHandler = (product) => {
+  //   dispatch(addItemToCart(product));
+  // };
   // ........end shopping cart
 
   return (

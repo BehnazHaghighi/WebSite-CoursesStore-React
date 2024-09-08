@@ -1,14 +1,13 @@
 import React from "react";
-import { useSelector, useDispatch } from "react-redux";
-import { removeItemFromCart } from "../../redux/slice/cartSlice";
+import { useSelector } from "react-redux";
+import Counter from "../Counter/Counter";
+import { Link } from "react-router-dom";
 
 const Cart = () => {
-  const { items, totalQuantity, totalPrice } = useSelector((state) => state.cart);
-  const dispatch = useDispatch();
-
-  const removeFromCartHandler = (id) => {
-    dispatch(removeItemFromCart(id));
-  };
+  const { items, totalQuantity, totalPrice } = useSelector(
+    (state) => state.cart
+  );
+  const token = useSelector((state) => state.auth.token);
 
   return (
     <div className="p-4">
@@ -19,17 +18,15 @@ const Cart = () => {
         <div>
           <ul>
             {items.map((item) => (
-              <li key={item.id} className="flex justify-between items-center mb-2">
+              <li
+                key={item.id}
+                className="flex justify-between items-center mb-2"
+              >
                 <span>
                   {item.name} ({item.quantity})
                 </span>
                 <span>{item.totalPrice} تومان</span>
-                <button
-                  onClick={() => removeFromCartHandler(item.id)}
-                  className="bg-red-500 text-white px-2 py-1 rounded hover:bg-red-700 transition"
-                >
-                  حذف
-                </button>
+                <Counter product={item} /> 
               </li>
             ))}
           </ul>
@@ -39,6 +36,22 @@ const Cart = () => {
           </div>
         </div>
       )}
+
+      {/* payment  */}
+      {token ? (
+        <Link to="/ReceiptShopping">
+          <button className="bg-blue-500 px-4 py-2 rounded text-white hover:bg-blue-600">
+            اقدام به پرداخت
+          </button>
+        </Link>
+      ) : (
+        <Link to="/Auth">
+          <button className="bg-blue-500 px-4 py-2 rounded text-white hover:bg-blue-600">
+            ورود به سایت
+          </button>
+        </Link>
+      )}
+      {/* end payment */}
     </div>
   );
 };
