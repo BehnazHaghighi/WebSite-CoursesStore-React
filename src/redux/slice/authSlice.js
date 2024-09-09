@@ -6,7 +6,7 @@ export const userlogin = createAsyncThunk(
   async (data, { rejectWithValue }) => {
     try {
       const response = await axios.post(
-        "https://dummyjson.com/auth/login",
+        "http://localhost:5000/api/users/login",
         data
       );
       return response.data;

@@ -2,7 +2,7 @@ import interLogin from "./apiLogin";
 
 export const loginPost = async (body) => {
   try {
-    const url = "auth/login";
+    const url = "login";
     const response = await interLogin.post(url, body);
     console.log(response.data);
   } catch (error) {
@@ -13,7 +13,7 @@ export const loginPost = async (body) => {
 
 export const registerPost = async (body) => {
   try {
-    const url = "auth/user/register";
+    const url = "register";
     const response = await interLogin.post(url, body);
     console.log(response.data);
     return response;

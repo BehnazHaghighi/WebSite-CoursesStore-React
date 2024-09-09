@@ -25,8 +25,7 @@ const Login = ({ forgetHandler }) => {
 
   // ...........login
   // valid username and password
-  // username: 'emilys',
-  // password: 'emilyspass',
+  // {username: "admin", password: "admin1234"}
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
@@ -54,14 +53,24 @@ const Login = ({ forgetHandler }) => {
 
   // ...........end login
 
+
+  // Register
   const postdatRegister = async (data) => {
-    const response = await registerPost({
-      name: data.name,
-      lastName: data.lastName,
-      mobile: data.mobile,
-      password: data.password,
-    });
+    try {
+      const response = await registerPost({
+        username: data.mobile,
+        password: data.password,
+      });
+      
+      if (response.status === 200) {
+        alert(response.data.message); 
+      }
+    } catch (error) {
+      console.error("خطا در ثبت:", error);
+    }
   };
+  // end Register
+  
 
   const [showPasswordLogin, setShowPasswordLogin] = useState(false);
   const togglePasswordVisibilityLogin = () => {
@@ -131,7 +140,7 @@ const Login = ({ forgetHandler }) => {
             )}
           </div>
 
-          <div className="flex justify-end mb-4">
+          <div className="flex justify-start mb-4">
             <RememberMe />
           </div>
 

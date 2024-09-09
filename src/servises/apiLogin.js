@@ -1,7 +1,7 @@
 import axios from "axios";
 
 const apiLogin = axios.create({
-  baseURL: "https://dummyjson.com/",
+  baseURL: "http://localhost:5000/api/users/",
   timeout: 10000,
   headers: {
     "Content-Type": "application/json",

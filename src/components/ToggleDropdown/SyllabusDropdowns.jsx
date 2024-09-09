@@ -29,11 +29,11 @@ const Dropdown = ({ title, items }) => {
 const SyllabusDropdowns = ({ syllabus }) => {
   return (
     <div className="w-full max-w-md">
-      {syllabus.map((section, index) => (
+      {syllabus?.map((section, index) => (
         <Dropdown
           key={index}
           title={section.title}
-          items={section.subsections}
+          items={section.description}
         />
       ))}
     </div>

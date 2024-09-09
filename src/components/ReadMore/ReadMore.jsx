@@ -5,12 +5,12 @@ import ProductCard from "../ProductCard/ProductCard";
 
 const ReadMore = () => {
   const [ProdactsList, setProdactsList] = useState([]);
-  
+
   // get data
   const getProdactsHandler = async () => {
     try {
       const response = await getProdacts();
-      setProdactsList(response.products);
+      setProdactsList(response);
     } catch (error) {
       console.error("Error fetching products:", error);
     }
@@ -29,14 +29,15 @@ const ReadMore = () => {
     <div className="container mx-auto p-4">
       {/*show 6 product*/}
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-        {firstSixProdacts.map((item) => (
+        {firstSixProdacts?.map((item) => (
           <ProductCard
-            key={item.id}
+            key={item?.id}
             image={item?.thumbnail}
             altname={item?.title}
-            productname={item?.title}
+            status={item?.status}
+            title={item?.title}
             price={item?.price}
-            linkproduct={`/ProdactDetail/${item.id}`}
+            linkproduct={`/ProdactDetail/${item?.id}`}
           />
         ))}
       </div>

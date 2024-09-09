@@ -13,12 +13,12 @@ import { useSelector, useDispatch } from "react-redux";
 import { addItemToCart } from "../../redux/slice/cartSlice";
 
 const ProdactDetailCard = ({
-  image,
-  altname,
+  url,
   productname,
   price,
-  students,
-  hours,
+  sesions,
+  studentsCount,
+  timeCourse,
   description,
   product,
 }) => {
@@ -31,17 +31,6 @@ const ProdactDetailCard = ({
   const handleAddToCart = () => {
     dispatch(addItemToCart(product));
   };
-
-  const syllabusData = [
-    {
-      title: "سرفصل 1",
-      subsections: ["زیرمجموعه 1.1", "زیرمجموعه 1.2", "زیرمجموعه 1.3"],
-    },
-    {
-      title: "سرفصل 2",
-      subsections: ["زیرمجموعه 2.1", "زیرمجموعه 2.2"],
-    },
-  ];
 
   return (
     <div className="container mx-auto p-4 md:p-8 rtl">
@@ -60,12 +49,12 @@ const ProdactDetailCard = ({
               </div>
               <div className="flex justify-center items-center space-x-reverse space-x-2">
                 <FaGraduationCap size={14} className="text-blue-500" />
-                <span className="text-sm text-gray-700">{students} </span>
+                <span className="text-sm text-gray-700">{studentsCount} </span>
               </div>
             </div>
             <div className="flex justify-start items-center space-x-reverse space-x-2">
               <FaClock size={14} className="text-blue-500" />
-              <span className="text-sm text-gray-700">{hours}</span>
+              <span className="text-sm text-gray-700">{timeCourse}</span>
             </div>
           </div>
 
@@ -93,11 +82,12 @@ const ProdactDetailCard = ({
 
         {/* Section for Image */}
         <div className="relative w-full md:w-1/2">
-          <img
-            src={image}
-            alt={altname}
-            className="w-full h-64 object-contain"
-          />
+          <img src={url} className="w-full h-64 object-contain" />
+
+          {/* <video width="320" height="240" controls>
+  <source src={url} type="video/mp4">
+</video>  */}
+
           {!isLogin && (
             <div className="absolute inset-0 bg-black bg-opacity-50 flex justify-center items-center">
               <FaLock size={48} className="text-white" />
@@ -114,7 +104,7 @@ const ProdactDetailCard = ({
       {/* Syllabus Dropdowns */}
       <div className="mt-3 text-right">
         <h2 className="mb-2">سرفصل‌ها</h2>
-        <SyllabusDropdowns syllabus={syllabusData} />
+        <SyllabusDropdowns syllabus={sesions} />
       </div>
     </div>
   );

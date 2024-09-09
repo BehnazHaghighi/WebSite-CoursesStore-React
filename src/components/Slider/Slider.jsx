@@ -1,19 +1,31 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 
 const Slider = ({ slides }) => {
   const [currentIndex, setCurrentIndex] = useState(0);
 
+  // nextSlide
   const nextSlide = () => {
     setCurrentIndex((prevIndex) =>
       prevIndex === slides.length - 1 ? 0 : prevIndex + 1
     );
   };
 
+  // prevSlide
   const prevSlide = () => {
     setCurrentIndex((prevIndex) =>
       prevIndex === 0 ? slides.length - 1 : prevIndex - 1
     );
   };
+
+  //timer 3second
+  useEffect(() => {
+    const interval = setInterval(() => {
+      nextSlide();
+    }, 3000);
+
+    
+    return () => clearInterval(interval);
+  }, []);
 
   return (
     <div className="max-w-2xl mx-auto mt-10">

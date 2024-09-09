@@ -21,12 +21,13 @@ import purmohammad from "../../assets/image/purmohammad.jpg";
 import farajpour from "../../assets/image/farajpour.jpg";
 import mirzaei from "../../assets/image/mirzaei.jpg";
 import malekzadeh from "../../assets/image/malekzadeh.jpg";
+import slide1 from "../../assets/image/slider/1.png";
+import slide2 from "../../assets/image/slider/2.jpg";
+import slide3 from "../../assets/image/slider/5.jpg";
+import slide4 from "../../assets/image/slider/7.jpg";
 
-const slides = [
-  "https://via.placeholder.com/800x400?text=Slide+1",
-  "https://via.placeholder.com/800x400?text=Slide+2",
-  "https://via.placeholder.com/800x400?text=Slide+3",
-];
+
+const slides = [slide1, slide2, slide3, slide4];
 
 const reviews = [
   {

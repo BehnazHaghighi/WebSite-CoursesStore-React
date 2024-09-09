@@ -11,8 +11,9 @@ const Prodacts = () => {
   const getProdactsHandler = async () => {
     try {
       const response = await getProdacts();
-      setProdactsList(response.products);
-      // console.log(response.products)
+      setProdactsList(response);
+      console.log(response)
+      
     } catch (error) {}
   };
 
@@ -30,12 +31,13 @@ const Prodacts = () => {
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6  rounded-lg p-4">
             {ProdactsList?.map((item, index) => (
               <ProductCard
-                key={item.id}
+                key={item?.id}
                 image={item?.thumbnail}
                 altname={item?.title}
-                productname={item?.title}
+                status={item?.status}
+                title={item?.title}
                 price={item?.price}
-                linkproduct={`/ProdactDetail/${item.id}`}
+                linkproduct={`/ProdactDetail/${item?.id}`}
               />
             ))}
           </div>

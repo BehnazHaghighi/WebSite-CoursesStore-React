@@ -5,8 +5,9 @@ const Receipt = () => {
   const location = useLocation();
   const { cartData } = location.state; // دریافت داده‌های ارسال‌شده
 
+  // محاسبه مبلغ کل با تبدیل قیمت‌ها به عدد
   const totalAmount = cartData.items.reduce(
-    (acc, item) => acc + item.price * item.quantity,
+    (acc, item) => acc + parseInt(item.price) * item.quantity,
     0
   );
 
@@ -28,13 +29,13 @@ const Receipt = () => {
               <tr key={item.id}>
                 <td className="text-right px-4 py-2 border-b">{item.name}</td>
                 <td className="text-right px-4 py-2 border-b">
-                  {item.price.toLocaleString()}
+                  {parseInt(item.price).toLocaleString()}
                 </td>
                 <td className="text-right px-4 py-2 border-b">
                   {item.quantity}
                 </td>
                 <td className="text-right px-4 py-2 border-b">
-                  {(item.price * item.quantity).toLocaleString()}
+                  {(parseInt(item.price) * item.quantity).toLocaleString()}
                 </td>
               </tr>
             ))}

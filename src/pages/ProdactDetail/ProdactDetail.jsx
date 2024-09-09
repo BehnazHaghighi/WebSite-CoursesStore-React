@@ -13,7 +13,7 @@ const ProdactDetail = () => {
 
   const getProdactDetailHandler = async () => {
     try {
-      const res = await axios.get(`https://dummyjson.com/products/${param.id}`);
+      const res = await axios.get(`http://localhost:5000/api/products/${param.id}`);
       setsingelProduct(res.data);
     } catch (error) {}
   };
@@ -22,24 +22,16 @@ const ProdactDetail = () => {
     getProdactDetailHandler();
   }, []);
 
-  // ........shopping cart
-  // const dispatch = useDispatch();
-
-  // const addToCartHandler = (product) => {
-  //   dispatch(addItemToCart(product));
-  // };
-  // ........end shopping cart
-
   return (
     <Layout>
       <>
         <ProdactDetailCard
-          image={singelProduct.thumbnail}
-          altname={singelProduct.title}
+          url={singelProduct.thumbnail}
           productname={singelProduct.title}
           price={singelProduct.price}
-          students={"179 دانشجو"}
-          hours={"۷ ساعت و ۴۵ دقیقه"}
+          sesions={singelProduct.sesions}
+          studentsCount={singelProduct.studentsCount}
+          timeCourse={singelProduct.timeCourse}
           description={singelProduct.description}
           product={{
             ...singelProduct,
