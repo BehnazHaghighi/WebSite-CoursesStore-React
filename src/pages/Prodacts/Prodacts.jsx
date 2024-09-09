@@ -32,7 +32,7 @@ const Prodacts = () => {
             {ProdactsList?.map((item, index) => (
               <ProductCard
                 key={item?.id}
-                image={item?.thumbnail}
+                thumbnail={item?.thumbnail}
                 altname={item?.title}
                 status={item?.status}
                 title={item?.title}

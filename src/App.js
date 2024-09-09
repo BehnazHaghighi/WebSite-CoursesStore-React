@@ -26,7 +26,9 @@ const App = () => {
 
   return (
     <div
-      className={darkMode ? "bg-gray-800 text-white" : "bg-white text-black"}
+   
+
+      className={darkMode ? "bg-gray-800 text-blue-500" : "bg-white text-black"}
     >
       <Routes>
         <Route>

@@ -6,9 +6,7 @@ const Shopping = () => {
   return (
     <>
       <Layout>
-        <ShoppingCart/>
-
-       
+        <ShoppingCart />
       </Layout>
     </>
   );

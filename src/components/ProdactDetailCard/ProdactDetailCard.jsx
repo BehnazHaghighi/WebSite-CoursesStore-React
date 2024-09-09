@@ -80,13 +80,12 @@ const ProdactDetailCard = ({
           </Link>
         </div>
 
-        {/* Section for Image */}
+        {/* Section for Video */}
         <div className="relative w-full md:w-1/2">
-          <img src={url} className="w-full h-64 object-contain" />
-
-          {/* <video width="320" height="240" controls>
-  <source src={url} type="video/mp4">
-</video>  */}
+          <video width="520" height="440" controls>
+            <source src={url} type="video/mp4" />
+            Your browser does not support the video tag.
+          </video>
 
           {!isLogin && (
             <div className="absolute inset-0 bg-black bg-opacity-50 flex justify-center items-center">

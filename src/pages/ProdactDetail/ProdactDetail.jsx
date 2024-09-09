@@ -3,8 +3,7 @@ import { useEffect, useState } from "react";
 import { useLocation, useParams } from "react-router-dom";
 import ProdactDetailCard from "../../components/ProdactDetailCard/ProdactDetailCard";
 import Layout from "../../components/Layout/Layout";
-import { useDispatch } from "react-redux";
-import { addItemToCart } from "../../redux/slice/cartSlice";
+
 
 const ProdactDetail = () => {
   const location = useLocation();

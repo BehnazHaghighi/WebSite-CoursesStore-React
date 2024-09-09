@@ -11,7 +11,9 @@ const BlogDetail = () => {
 
   const getblogDetailHandler = async () => {
     try {
-      const res = await axios.get(`https://dummyjson.com/products/${param.id}`);
+      const res = await axios.get(
+        `http://localhost:5000/api/products/${param.id}`
+      );
       setSingelBlog(res.data);
     } catch (error) {}
   };

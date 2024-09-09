@@ -53,7 +53,6 @@ const Login = ({ forgetHandler }) => {
 
   // ...........end login
 
-
   // Register
   const postdatRegister = async (data) => {
     try {
@@ -61,16 +60,15 @@ const Login = ({ forgetHandler }) => {
         username: data.mobile,
         password: data.password,
       });
-      
+
       if (response.status === 200) {
-        alert(response.data.message); 
+        alert(response.data.message);
       }
     } catch (error) {
       console.error("خطا در ثبت:", error);
     }
   };
   // end Register
-  
 
   const [showPasswordLogin, setShowPasswordLogin] = useState(false);
   const togglePasswordVisibilityLogin = () => {

@@ -32,7 +32,7 @@ const ReadMore = () => {
         {firstSixProdacts?.map((item) => (
           <ProductCard
             key={item?.id}
-            image={item?.thumbnail}
+            thumbnail={item?.thumbnail}
             altname={item?.title}
             status={item?.status}
             title={item?.title}

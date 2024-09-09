@@ -2,12 +2,13 @@ import React from "react";
 import { Link } from "react-router-dom";
 import { FaArrowLeft } from "react-icons/fa";
 
-const ProductCard = ({ image, altname,status, title, price, linkproduct }) => {
+const ProductCard = ({ thumbnail, altname,status, title, price, linkproduct }) => {
   return (
     <>
       <div className="bg-white rounded-lg shadow-md p-4">
         <img
-          src={image}
+          // src={"https://via.placeholder.com/150"}
+          src={thumbnail}
           alt={altname}
           className="w-full h-48 object-cover mb-4 rounded-lg"
         />

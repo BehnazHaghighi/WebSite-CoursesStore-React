@@ -5,9 +5,7 @@ import NotFound from "../../components/NotFound/NotFound";
 const NotFoundPage = () => {
   return (
     <>
-      {/* <Layout> */}
       <NotFound />
-      {/* </Layout> */}
     </>
   );
 };
