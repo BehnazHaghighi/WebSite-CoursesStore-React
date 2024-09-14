@@ -82,9 +82,10 @@ const ProdactDetailCard = ({
 
         {/* Section for Video */}
         <div className="relative w-full md:w-1/2">
+         
           <video width="520" height="440" controls>
-            <source src={url} type="video/mp4" />
-            Your browser does not support the video tag.
+            <source src={`http://localhost:5000${url}`} type="video/mp4" />
+            video tag
           </video>
 
           {!isLogin && (

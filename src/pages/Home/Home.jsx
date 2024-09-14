@@ -163,12 +163,12 @@ const Home = () => {
             از زبان دانشجویان فرانت کست
           </h1>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-            {reviews.map((review) => (
+            {reviews?.map((review) => (
               <UserReviewCard
-                key={review.id}
-                image={review.image}
-                name={review.name}
-                review={review.review}
+                key={review?.id}
+                image={review?.image}
+                name={review?.name}
+                review={review?.review}
               />
             ))}
           </div>

@@ -23,7 +23,7 @@ const ReadMore = () => {
   }, []);
 
   // only 6 product
-  const firstSixProdacts = ProdactsList.slice(0, 6);
+  const firstSixProdacts = ProdactsList?.slice(0, 6);
 
   return (
     <div className="container mx-auto p-4">
@@ -32,7 +32,7 @@ const ReadMore = () => {
         {firstSixProdacts?.map((item) => (
           <ProductCard
             key={item?.id}
-            thumbnail={item?.thumbnail}
+            thumbnail={`http://localhost:5000${item?.thumbnail}`}
             altname={item?.title}
             status={item?.status}
             title={item?.title}

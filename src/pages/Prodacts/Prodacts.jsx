@@ -32,7 +32,7 @@ const Prodacts = () => {
             {ProdactsList?.map((item, index) => (
               <ProductCard
                 key={item?.id}
-                thumbnail={item?.thumbnail}
+                thumbnail={`http://localhost:5000${item?.thumbnail}`}
                 altname={item?.title}
                 status={item?.status}
                 title={item?.title}

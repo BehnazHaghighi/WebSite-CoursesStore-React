@@ -39,7 +39,7 @@ const Blog = () => {
                 key={item.id}
                 title={item?.title}
                 imageUrl={item?.thumbnail}
-                link={`/BlogDetail/${item.id}`}
+                link={`/BlogDetail/${item?.id}`}
               />
             ))}
           </div>

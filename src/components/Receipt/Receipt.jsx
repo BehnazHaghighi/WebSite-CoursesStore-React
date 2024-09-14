@@ -25,17 +25,17 @@ const Receipt = () => {
             </tr>
           </thead>
           <tbody>
-            {cartData.items.map((item) => (
-              <tr key={item.id}>
-                <td className="text-right px-4 py-2 border-b">{item.name}</td>
+            {cartData.items?.map((item) => (
+              <tr key={item?.id}>
+                <td className="text-right px-4 py-2 border-b">{item?.name}</td>
                 <td className="text-right px-4 py-2 border-b">
-                  {parseInt(item.price).toLocaleString()}
+                  {parseInt(item?.price).toLocaleString()}
                 </td>
                 <td className="text-right px-4 py-2 border-b">
-                  {item.quantity}
+                  {item?.quantity}
                 </td>
                 <td className="text-right px-4 py-2 border-b">
-                  {(parseInt(item.price) * item.quantity).toLocaleString()}
+                  {(parseInt(item?.price) * item?.quantity).toLocaleString()}
                 </td>
               </tr>
             ))}

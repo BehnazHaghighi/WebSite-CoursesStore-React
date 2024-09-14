@@ -7,7 +7,6 @@ const ProductCard = ({ thumbnail, altname,status, title, price, linkproduct }) =
     <>
       <div className="bg-white rounded-lg shadow-md p-4">
         <img
-          // src={"https://via.placeholder.com/150"}
           src={thumbnail}
           alt={altname}
           className="w-full h-48 object-cover mb-4 rounded-lg"

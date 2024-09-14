@@ -31,10 +31,17 @@ export const authSlice = createSlice({
     token: (state, action) => {
       state.token = action.payload.token;
     },
-    logaut: (state, action) => {
+    logOut: (state) => {
       state.token = "";
       state.username = "";
       state.lastName = "";
+      localStorage.removeItem("token")
+      localStorage.removeItem("cartItems")
+      localStorage.removeItem("cartTotalQuantity")
+      localStorage.removeItem("cartTotalPrice")
+      localStorage.removeItem("username")
+      localStorage.removeItem("darkMode")
+
     },
   },
   extraReducers: (builder) => {
@@ -54,5 +61,5 @@ export const authSlice = createSlice({
   },
 });
 
-export const { token, logaut } = authSlice.actions;
+export const { token, logOut } = authSlice.actions;
 export default authSlice.reducer;
