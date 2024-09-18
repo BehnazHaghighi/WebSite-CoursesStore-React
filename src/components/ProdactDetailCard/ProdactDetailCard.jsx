@@ -32,8 +32,6 @@ const ProdactDetailCard = ({
     dispatch(addItemToCart(product));
   };
 
-  console.log(url);
-
   return (
     <div className="container mx-auto p-4 md:p-8 rtl">
       <div className="flex flex-col md:flex-row bg-white shadow-lg rounded-lg overflow-hidden">
@@ -47,11 +45,11 @@ const ProdactDetailCard = ({
             <div className="flex flex-row justify-between items-center space-y-2">
               <div className="flex justify-center items-center space-x-reverse space-x-2">
                 <FaDollarSign size={14} className="text-blue-500" />
-                <span className=" text-gray-700 text-sm">{price} تومان</span>
+                <span className="text-gray-700 text-sm">{price} تومان</span>
               </div>
               <div className="flex justify-center items-center space-x-reverse space-x-2">
                 <FaGraduationCap size={14} className="text-blue-500" />
-                <span className="text-sm text-gray-700">{studentsCount} </span>
+                <span className="text-sm text-gray-700">{studentsCount}</span>
               </div>
             </div>
             <div className="flex justify-start items-center space-x-reverse space-x-2">
@@ -84,11 +82,16 @@ const ProdactDetailCard = ({
 
         {/* Section for Video */}
         <div className="relative w-full md:w-1/2">
-          {/* src={`http://localhost:5000${url}`} */}
-          <video width="520" height="440" controls>
-            <source src={url} type="video/mp4" />
-            video tag.
-          </video>
+          {url ? (
+            <video width="520" height="440" controls>
+              <source src={url} type="video/mp4" />
+              مرورگر شما از این فرمت ویدیو پشتیبانی نمی‌کند
+            </video>
+          ) : (
+            <p className="text-center text-gray-500">
+              ویدیویی برای نمایش موجود نیست.
+            </p>
+          )}
 
           {!isLogin && (
             <div className="absolute inset-0 bg-black bg-opacity-50 flex justify-center items-center">
