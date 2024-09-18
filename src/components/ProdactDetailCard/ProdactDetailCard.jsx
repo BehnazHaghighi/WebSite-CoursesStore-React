@@ -32,6 +32,8 @@ const ProdactDetailCard = ({
     dispatch(addItemToCart(product));
   };
 
+  console.log(url);
+
   return (
     <div className="container mx-auto p-4 md:p-8 rtl">
       <div className="flex flex-col md:flex-row bg-white shadow-lg rounded-lg overflow-hidden">
@@ -82,10 +84,10 @@ const ProdactDetailCard = ({
 
         {/* Section for Video */}
         <div className="relative w-full md:w-1/2">
-         
+          {/* src={`http://localhost:5000${url}`} */}
           <video width="520" height="440" controls>
-            <source src={`http://localhost:5000${url}`} type="video/mp4" />
-            video tag
+            <source src={url} type="video/mp4" />
+            video tag.
           </video>
 
           {!isLogin && (

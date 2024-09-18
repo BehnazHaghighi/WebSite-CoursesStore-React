@@ -25,7 +25,7 @@ const ProdactDetail = () => {
     <Layout>
       <>
         <ProdactDetailCard
-          url={singelProduct.thumbnail}
+          url={singelProduct.url}
           productname={singelProduct.title}
           price={singelProduct.price}
           sesions={singelProduct.sesions}

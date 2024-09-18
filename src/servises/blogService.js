@@ -9,3 +9,13 @@ export const getBlogs = async () => {
     console.log(error);
   }
 };
+
+export const ordersPost = async (body) => {
+  try {
+    const url = "orders";
+    const response = await api.post(url, body);
+    return response;
+  } catch (error) {
+    throw error; // پرتاب خطا برای مدیریت در کامپوننت
+  }
+};

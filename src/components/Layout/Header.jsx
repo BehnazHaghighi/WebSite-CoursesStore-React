@@ -19,9 +19,9 @@ const Header = () => {
     dispatch(toggleDarkmode());
   };
 
-  const logOutHandler=()=>{
-    dispatch(logOut())
-  }
+  const logOutHandler = () => {
+    dispatch(logOut());
+  };
 
   return (
     <header className="bg-gray-200 dark:bg-gray-800 p-4 flex flex-col md:flex-row items-center justify-between rtl">
@@ -32,9 +32,14 @@ const Header = () => {
         >
           {darkMode ? "Light Mode" : "Dark Mode"}
         </button>
-        <button onClick={logOutHandler} className="bg-red-500 text-white font-bold py-2 px-6 rounded-full shadow-md hover:bg-red-600 transition duration-300">
-          خروج
-        </button>
+        {token && (
+          <button
+            onClick={logOutHandler}
+            className="bg-red-500 text-white font-bold py-2 px-6 rounded-full shadow-md hover:bg-red-600 transition duration-300"
+          >
+            خروج
+          </button>
+        )}
       </div>
 
       <nav className="mt-4 md:mt-0 flex flex-col md:flex-row md:space-x-reverse md:space-x-6 space-y-2 md:space-y-0 text-center">

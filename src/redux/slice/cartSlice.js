@@ -1,9 +1,9 @@
 import { createSlice } from "@reduxjs/toolkit";
 
 const initialState = {
-  items: JSON.parse(localStorage.getItem('cartItems')) || [],
-  totalQuantity: JSON.parse(localStorage.getItem('cartTotalQuantity')) || 0,
-  totalPrice: JSON.parse(localStorage.getItem('cartTotalPrice')) || 0,
+  items: JSON.parse(localStorage.getItem("cartItems")) || [],
+  totalQuantity: JSON.parse(localStorage.getItem("cartTotalQuantity")) || 0,
+  totalPrice: JSON.parse(localStorage.getItem("cartTotalPrice")) || 0,
 };
 
 const cartSlice = createSlice({
@@ -12,11 +12,12 @@ const cartSlice = createSlice({
   reducers: {
     addItemToCart(state, action) {
       const newItem = action.payload;
-      const price = parseInt(newItem.price);
-      const existingItem = state.items.find(item => item.id === newItem.id);
+      const price = parseFloat(newItem.price);
+      const existingItem = state.items.find((item) => item.id === newItem.id);
+
       if (existingItem) {
         existingItem.quantity++;
-        existingItem.totalPrice += price;
+        existingItem.totalPrice = parseFloat(existingItem.totalPrice) + price;
       } else {
         state.items.push({
           id: newItem.id,
@@ -27,31 +28,42 @@ const cartSlice = createSlice({
         });
       }
       state.totalQuantity++;
-      state.totalPrice += price;
+      state.totalPrice = parseFloat(state.totalPrice) + price;
 
-      // save localStorage
-      localStorage.setItem('cartItems', JSON.stringify(state.items));
-      localStorage.setItem('cartTotalQuantity', JSON.stringify(state.totalQuantity));
-      localStorage.setItem('cartTotalPrice', JSON.stringify(state.totalPrice));
+      // ذخیره در localStorage
+      localStorage.setItem("cartItems", JSON.stringify(state.items));
+      localStorage.setItem(
+        "cartTotalQuantity",
+        JSON.stringify(state.totalQuantity)
+      );
+      localStorage.setItem("cartTotalPrice", JSON.stringify(state.totalPrice));
     },
+
     removeItemFromCart(state, action) {
       const id = action.payload;
-      const existingItem = state.items.find(item => item.id === id);
+      const existingItem = state.items.find((item) => item.id === id);
+
       if (existingItem) {
-        const price = existingItem.price;
+        const price = parseFloat(existingItem.price);
         if (existingItem.quantity === 1) {
-          state.items = state.items.filter(item => item.id !== id);
+          state.items = state.items.filter((item) => item.id !== id);
         } else {
           existingItem.quantity--;
-          existingItem.totalPrice -= price;
+          existingItem.totalPrice = parseFloat(existingItem.totalPrice) - price;
         }
         state.totalQuantity--;
-        state.totalPrice -= price;
+        state.totalPrice = parseFloat(state.totalPrice) - price;
 
-        // update localStorage
-        localStorage.setItem('cartItems', JSON.stringify(state.items));
-        localStorage.setItem('cartTotalQuantity', JSON.stringify(state.totalQuantity));
-        localStorage.setItem('cartTotalPrice', JSON.stringify(state.totalPrice));
+        // به‌روزرسانی localStorage
+        localStorage.setItem("cartItems", JSON.stringify(state.items));
+        localStorage.setItem(
+          "cartTotalQuantity",
+          JSON.stringify(state.totalQuantity)
+        );
+        localStorage.setItem(
+          "cartTotalPrice",
+          JSON.stringify(state.totalPrice)
+        );
       }
     },
   },

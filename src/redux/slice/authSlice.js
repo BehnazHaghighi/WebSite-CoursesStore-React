@@ -36,11 +36,11 @@ export const authSlice = createSlice({
       state.username = "";
       state.lastName = "";
       localStorage.removeItem("token")
-      localStorage.removeItem("cartItems")
-      localStorage.removeItem("cartTotalQuantity")
-      localStorage.removeItem("cartTotalPrice")
-      localStorage.removeItem("username")
-      localStorage.removeItem("darkMode")
+      // localStorage.removeItem("cartItems")
+      // localStorage.removeItem("cartTotalQuantity")
+      // localStorage.removeItem("cartTotalPrice")
+      // localStorage.removeItem("username")
+      // localStorage.removeItem("darkMode")
 
     },
   },

@@ -3,11 +3,10 @@ import { useLocation } from "react-router-dom";
 
 const Receipt = () => {
   const location = useLocation();
-  const { cartData } = location.state; // دریافت داده‌های ارسال‌شده
+  const { cartData } = location.state;
 
-  // محاسبه مبلغ کل با تبدیل قیمت‌ها به عدد
   const totalAmount = cartData.items.reduce(
-    (acc, item) => acc + parseInt(item.price) * item.quantity,
+    (acc, item) => acc + (parseFloat(item.price) * parseInt(item.quantity, 10)),
     0
   );
 
@@ -26,16 +25,16 @@ const Receipt = () => {
           </thead>
           <tbody>
             {cartData.items?.map((item) => (
-              <tr key={item?.id}>
+              <tr key={item?.productId}>
                 <td className="text-right px-4 py-2 border-b">{item?.name}</td>
                 <td className="text-right px-4 py-2 border-b">
-                  {parseInt(item?.price).toLocaleString()}
+                  {parseFloat(item?.price).toLocaleString()}
                 </td>
                 <td className="text-right px-4 py-2 border-b">
-                  {item?.quantity}
+                  {parseInt(item?.quantity, 10)}
                 </td>
                 <td className="text-right px-4 py-2 border-b">
-                  {(parseInt(item?.price) * item?.quantity).toLocaleString()}
+                  {(parseFloat(item?.price) * parseInt(item?.quantity, 10)).toLocaleString()}
                 </td>
               </tr>
             ))}
